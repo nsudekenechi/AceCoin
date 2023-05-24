@@ -1,3 +1,5 @@
+/* eslint-disable react/prop-types */
+
 export const InputDesc = ({ title, desc }) => {
   return (
     <div className="flex flex-col gap-y-1">

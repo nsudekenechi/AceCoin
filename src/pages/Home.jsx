@@ -4,11 +4,13 @@ import { VscVerifiedFilled } from "react-icons/vsc";
 import { TimeBox } from "../components/timeBox";
 import { AtmLogo } from "../components/AtmLogo";
 import { InputDesc } from "../components/InputDesc";
+import { CardInput } from "../components/CardInput";
+import { Input } from "../components/Input";
 export const Home = () => {
   return (
-    <div className="p-20 grid grid-cols-3">
+    <div className="px-20 py-10 grid grid-cols-3  gap-x-20">
       {/* Left Panel */}
-      <section className="col-span-2 flex flex-col gap-y-6">
+      <section className="col-span-2 flex flex-col gap-y-7">
         <nav>
           <ul className="flex justify-between items-center">
             <li>
@@ -48,33 +50,10 @@ export const Home = () => {
             <div className="w-[30px]">
               <AtmLogo size={20} />
             </div>
-            <input
-              type="text"
-              className="outline-none w-[50px] placeholder:text-black/40"
-              placeholder="2412"
-              maxLength={4}
-            />
-            <div className="h-0.5 w-1 bg-black/60"></div>
-            <input
-              type="text"
-              className="outline-none w-[50px] placeholder:text-black/40"
-              placeholder="7512"
-              maxLength={4}
-            />
-            <div className="h-0.5 w-1 bg-black/60"></div>
-            <input
-              type="text"
-              className="outline-none w-[50px] placeholder:text-black/40"
-              placeholder="3412"
-              maxLength={4}
-            />
-            <div className="h-0.5 w-1 bg-black/60"></div>
-            <input
-              type="text"
-              className="outline-none w-[50px] placeholder:text-black/40"
-              placeholder="3456"
-              maxLength={4}
-            />
+            <CardInput placeholder={"2365"} />
+            <CardInput placeholder={"7512"} />
+            <CardInput placeholder={"3412"} />
+            <CardInput placeholder={"3456"} last={true} />
           </div>
           <div className="">
             <VscVerifiedFilled size={25} className="text-blue-500" />
@@ -89,9 +68,45 @@ export const Home = () => {
             />
           </div>
           <div className="col-span-1">
-            <div className="border h-[100%]"></div>
+            <Input length={4} placeholder={"CVV"} />
           </div>
         </div>
+
+        <div className="grid grid-cols-2">
+          <div className="col-span-1">
+            <InputDesc
+              title={"Expiry Date"}
+              desc={"Enter the expiration date of the card"}
+            />
+          </div>
+          <div className="col-span-1 grid grid-cols-5 ">
+            <div className="col-span-2">
+              <Input icon="false" placeholder={"MM"} length={2} />
+            </div>
+            <div className="col-span-1 flex items-center justify-center">
+              <h1 className="text-2xl">/</h1>
+            </div>
+            <div className="col-span-2">
+              <Input icon="false" placeholder={"YY"} length={2} />
+            </div>
+          </div>
+        </div>
+
+        <div className="grid grid-cols-2">
+          <div className="col-span-1">
+            <InputDesc
+              title={"Password"}
+              desc={"Enter Your  Dynamic Password"}
+            />
+          </div>
+          <div className="col-span-1">
+            <Input length={4} placeholder={"Password"} />
+          </div>
+        </div>
+
+        <button className="bg-[#025EFE] py-5 text-xl text-white rounded-xl">
+          Pay Now
+        </button>
       </section>
 
       {/* RIght Panel */}
