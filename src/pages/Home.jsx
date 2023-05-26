@@ -1,14 +1,39 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable react/no-unknown-property */
 import { BsCreditCardFill, BsPencilFill, BsWifi } from "react-icons/bs";
-import { VscVerifiedFilled } from "react-icons/vsc";
 import { IoLogoApple } from "react-icons/io";
 import { TbReceipt } from "react-icons/tb";
 import { TimeBox } from "../components/timeBox";
 import { AtmLogo } from "../components/AtmLogo";
 import { InputDesc } from "../components/InputDesc";
-import { CardInput } from "../components/CardInput";
 import { Input } from "../components/Input";
+import { CardNumber } from "../components/CardNumber";
+import { useEffect, useState } from "react";
 export const Home = () => {
+  let date = new Date();
+  //Adding 0 to digits < 9 ==> 09,Converting time to an array, to loop tru the array and output it as elements
+  const zeroTime = (time) => {
+    let newTime = time < 10 ? `0${time}` : time;
+    return newTime.toString().split("");
+  };
+  const element = (time) =>
+    time.map((item, index) => <TimeBox num={item} key={index} />);
+
+  const [time, setTime] = useState({
+    hour: zeroTime(date.getHours()),
+    minute: zeroTime(date.getMinutes()),
+  });
+
+  useEffect(() => {
+    let timer = setInterval(() => {
+      date = new Date();
+      setTime({
+        hour: zeroTime(date.getHours()),
+        minute: zeroTime(date.getMinutes()),
+      });
+    }, 1000);
+    return () => clearInterval(timer);
+  }, []);
   return (
     <div className="px-20 py-10 grid grid-cols-3  ">
       {/* Left Panel */}
@@ -27,11 +52,10 @@ export const Home = () => {
             </li>
 
             <ul className="flex gap-x-1 items-center">
-              <TimeBox num={0} />
-              <TimeBox num={0} />
+              {/* {element(time.hour)} */}
               <span>:</span>
-              <TimeBox num={0} />
-              <TimeBox num={0} />
+              {element(time.minute)}
+              {console.log(time.minute)}
             </ul>
           </ul>
         </nav>
@@ -46,22 +70,9 @@ export const Home = () => {
             <span>Edit</span>
           </div>
         </div>
-
-        <div className="border p-5 rounded-md flex justify-between items-center">
-          <div className="flex items-center gap-x-5">
-            <div>
-              <AtmLogo size={20} left={5} />
-            </div>
-            <CardInput placeholder={"2365"} />
-            <CardInput placeholder={"7512"} />
-            <CardInput placeholder={"3412"} />
-            <CardInput placeholder={"3456"} last={true} />
-          </div>
-          <div className="">
-            <VscVerifiedFilled size={25} className="text-blue-500" />
-          </div>
-        </div>
-
+        {/* Card  Number */}
+        <CardNumber />
+        {/* CVV */}
         <div className="grid grid-cols-2">
           <div className="col-span-1">
             <InputDesc
@@ -73,7 +84,7 @@ export const Home = () => {
             <Input length={4} placeholder={"CVV"} />
           </div>
         </div>
-
+        {/* Expiry  Date */}
         <div className="grid grid-cols-2">
           <div className="col-span-1">
             <InputDesc
@@ -93,7 +104,7 @@ export const Home = () => {
             </div>
           </div>
         </div>
-
+        {/* Password */}
         <div className="grid grid-cols-2">
           <div className="col-span-1">
             <InputDesc
@@ -105,8 +116,11 @@ export const Home = () => {
             <Input length={10} placeholder={"Password"} type={"password"} />
           </div>
         </div>
-
-        <button className="bg-[#025EFE] py-5 mt-10 text-xl text-white rounded-full">
+        {/* Button */}
+        <button
+          className="bg-[#025EFE] py-5 mt-10 text-xl text-white rounded-full relative"
+          id="btn"
+        >
           Pay Now
         </button>
       </section>
@@ -117,7 +131,7 @@ export const Home = () => {
           <div className="py-3 rounded-md px-10 bg-[#025EFE]"></div>
           <div className="bg-[#E8ECEF]/40 relative h-[100%] w-[100%] rounded-xl flex flex-col  gap-y-5 px-10 pb-5">
             {/* ATM Card*/}
-            <div className=" relative m-auto backdrop-blur-sm bg-white/60   rounded-3xl shadow-lg  -top-[14%] left-0 px-10 py-5 flex flex-col gap-y-10">
+            <div className=" relative m-auto backdrop-blur-sm bg-white/10   rounded-3xl shadow-lg  -top-[14%] left-0 px-10 py-5 flex flex-col gap-y-10">
               <div className="flex justify-between items-center ">
                 <img src="./Images/1.png" alt="" className="w-10 h-8  " />
                 <BsWifi size={20} />
