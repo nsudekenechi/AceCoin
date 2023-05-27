@@ -12,8 +12,8 @@ export const CardNumber = () => {
         "border-" + color
       } rounded-md h-[100%] flex justify-between  p-5 items-center`}
     >
-      <div className="flex items-center gap-x-5">
-        <div>
+      <div className="flex items-center gap-x-2 md:gap-x-5">
+        <div className="">
           <AtmLogo size={20} left={5} />
         </div>
         <CardInput placeholder={"2365"} setColor={setColor} />

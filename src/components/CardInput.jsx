@@ -12,8 +12,8 @@ export const CardInput = ({ placeholder, last, setColor }) => {
   return (
     <>
       <input
-        type="text"
-        className="outline-none  duration-1000 w-[50px] placeholder:text-black/40 placeholder:font-light  focus:placeholder:text-blue-500/60  focus:pl-1  focus:text-blue-500 font-bold"
+        type="number"
+        className="outline-none w-10  duration-1000 md:w-[50px] placeholder:text-black/40 placeholder:font-light  focus:placeholder:text-blue-500/60  focus:pl-1  focus:text-blue-500 font-bold text-[#1F2953]"
         placeholder={placeholder}
         maxLength={4}
         onFocus={handleColor}
