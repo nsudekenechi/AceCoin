@@ -5,17 +5,17 @@ import { CgMenuGridO } from "react-icons/cg";
 export const Input = ({ icon, placeholder, length, type }) => {
   icon = icon == undefined ? "" : icon;
   type = type == undefined ? "number" : type;
-  const [color, setColor] = useState("black/10");
+  const [color, setColor] = useState("border-black/10");
 
   const handleColor = () => {
-    setColor("blue-500");
+    setColor("border-blue-500");
   };
   const resetColor = () => {
-    setColor("black/10");
+    setColor("border-black/10");
   };
   return (
     <div
-      className={`duration-1000 border border-blue-500 rounded-md h-[100%] flex justify-between  md:text-xl    px-5  py-4  md:py-5 lg:py-3 items-center`}
+      className={`duration-1000 border ${color} rounded-md h-[100%] flex justify-between  md:text-xl    px-5  py-4  md:py-5 lg:py-3 items-center`}
     >
       <input
         type={type}
