@@ -15,11 +15,8 @@ export const Input = ({ icon, placeholder, length, type }) => {
   };
   return (
     <div
-      className={`duration-1000 border ${
-        "border-" + color
-      } rounded-md h-[100%] flex justify-between  md:text-xl    px-5  py-4  md:py-5 lg:py-3 items-center`}
+      className={`duration-1000 border border-blue-500 rounded-md h-[100%] flex justify-between  md:text-xl    px-5  py-4  md:py-5 lg:py-3 items-center`}
     >
-      {console.log(color)}
       <input
         type={type}
         placeholder={placeholder}
