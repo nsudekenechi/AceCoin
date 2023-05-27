@@ -19,6 +19,7 @@ export const Input = ({ icon, placeholder, length, type }) => {
         "border-" + color
       } rounded-md h-[100%] flex justify-between  md:text-xl    px-5  py-4  md:py-5 lg:py-3 items-center`}
     >
+      {console.log(color)}
       <input
         type={type}
         placeholder={placeholder}
